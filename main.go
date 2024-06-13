@@ -20,13 +20,24 @@ func prompt(text string) string {
 }
 
 func main() {
-	firstName := prompt("Enter your first name: ")
-	lastName := prompt("Enter your last name: ")
-	initialDeposit := prompt("Enter your initial deposit: ")
-	account := bank_operations.NewAccount(firstName, lastName, initialDeposit)
-	accountJson, err := json.Marshal(account)
-	err = os.WriteFile(fmt.Sprint("file.json"), accountJson, 0644)
-	if err != nil {
-		fmt.Println(err)
+	operation := prompt("What do you want to do?\nPress 1 to create a new account\nPress 2 to login to your account\nPress 3 to exit\n")
+	switch operation {
+	case "1":
+		firstName := prompt("Enter your first name: ")
+		lastName := prompt("Enter your last name: ")
+		initialDeposit := prompt("Enter your initial deposit: ")
+		account := bank_operations.NewAccount(firstName, lastName, initialDeposit, "12345678")
+		accountJson, err := json.Marshal(account)
+		err = os.WriteFile(fmt.Sprintf("%v.json", firstName), accountJson, 0644)
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Printf("Welcome to GoBank %v %v, account successfully created!", firstName, lastName)
+	case "3":
+		fmt.Printf("Bye for now")
+		return
+	default:
+		fmt.Println("Invalid operation, input either of 1, 2, 3 or exit with 4")
 	}
+
 }
