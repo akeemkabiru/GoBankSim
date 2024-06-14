@@ -29,10 +29,24 @@ func main() {
 		account := bank_operations.NewAccount(firstName, lastName, initialDeposit, "12345678")
 		accountJson, err := json.Marshal(account)
 		err = os.WriteFile(fmt.Sprintf("%v.json", firstName), accountJson, 0644)
+		fmt.Printf("Welcome to GoBank %v %v, account successfully created!\n", firstName, lastName)
+		bankOperations := prompt("Press:\n1 to view your balance\n2 to deposit to your account\n3 to make transfer\n4 to view your transaction history\n5 to logout\n")
+		switch bankOperations {
+		case "1":
+			fmt.Println("your balance is 200")
+		case "2":
+			fmt.Println("you can now make deposit")
+		case "3":
+			fmt.Println("you can transfer to family and friends or any third party")
+		case "4":
+			fmt.Printf("you can view your transaction history")
+		case "5":
+			fmt.Println("Bye for now")
+			return
+		}
 		if err != nil {
 			fmt.Println(err)
 		}
-		fmt.Printf("Welcome to GoBank %v %v, account successfully created!", firstName, lastName)
 	case "3":
 		fmt.Printf("Bye for now")
 		return
