@@ -23,4 +23,4 @@ git clone https://github.com/akeemkabiru/gobanksim.git
 cd gobanksim
 
 # Build the CLI tool
-go build -o gobanksim
+go build -o GoBankSim
