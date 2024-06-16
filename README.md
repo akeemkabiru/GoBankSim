@@ -17,7 +17,7 @@ To install GoBankSimulation, you need to have Go installed on your machine. Then
 
 ```bash
 # Clone the repository
-git clone https://github.com/akeemkabiru/gobanksim.git
+git clone https://github.com/akeemkabiru/GoBankSim.git
 
 # Navigate to the project directory
 cd gobanksim
