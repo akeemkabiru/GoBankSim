@@ -19,11 +19,20 @@ func prompt(text string) string {
 	return strings.TrimSpace(input)
 }
 
+func userAccount() {
+
+}
 func main() {
 	operation := prompt("What do you want to do?\nPress 1 to create a new account\nPress 2 to login to your account\nPress 3 to exit\n")
 	switch operation {
 	case "1":
 		firstName := prompt("Enter your first name: ")
+		file, err := os.ReadFile(firstName)
+		if err != nil {
+			fmt.Println(err)
+		}
+		text := string(file)
+		fmt.Printf(text)
 		lastName := prompt("Enter your last name: ")
 		initialDeposit := prompt("Enter your initial deposit: ")
 		account := bank_operations.NewAccount(firstName, lastName, initialDeposit, "12345678")
